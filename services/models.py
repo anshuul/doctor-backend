@@ -26,5 +26,17 @@ class Service(models.Model):
 
     def __str__(self):
         return f'{self.categories.name} ({self.language.name})'
+    __str__.short_description = 'Service Name'
+
+    @property
+    def service_contents(self):
+        return ', '.join(self.contents.all().values_list('title', flat=True))
+
+    @property
+    def category(self): return self.categories.name
+
+    @property
+    def selected_language(self): return self.language.name
+
 
 post_save.connect(post_save_activities_for_language_save, sender=ServiceLanguage)

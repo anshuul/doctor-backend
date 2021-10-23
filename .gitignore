@@ -1,4 +1,5 @@
 db.sqlite3
-*.jpg
+media/qr_codes/*.jpg
+*.pyc
 
 *.cpython-38.pyc

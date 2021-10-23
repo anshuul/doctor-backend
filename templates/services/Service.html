@@ -1,0 +1,92 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta charset="utf-8">
+<title>Zanpan</title>
+<link href="{% static '/services/css/style.css' %}" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">function refreshIframe() {
+    var ifr = document.getElementsByName('Right')[0];
+    ifr.src = ifr.src;
+}</script>
+</head>
+
+<body>
+    {% for message in messages %}
+        <script>
+            alert('{{message}}')
+            window.history.back()    
+        </script>
+    {% endfor %}
+
+                                        <!--VIDEOPOP-->
+                                        <div class="video-pop" id="video1">
+                                            <a href="#">X</a>
+                                            <iframe src="video-pop.html" name="Right"></iframe>
+                                        </div>
+                                        <!--VIDEOPOP-->
+
+
+
+
+<section class="header">
+	<div class="container">
+	    <h1>{{ doctor.name }}</h1>
+    </div>
+</section>
+<section class="body-area">
+
+  <div class="container">
+        
+    <div class="change-language">
+        <a id='choose-lng'><img style='cursor: pointer;' src="{% static 'services/image/flow.jpg' %}"> Change language
+        </a>
+    </div>
+
+{% for content in contents %}
+    <!---SERVICE START-------------->
+        <div class="service-wrapper">
+            <h1>{{ content.title }}</h1>
+            <p>{{ content.description }}</p>
+            <div class="video-wrap"> 
+            {{ content.video_embed_code | safe }}
+            </div>
+        </div>
+    <!---SERVICE END-------------->
+{% endfor %}
+
+
+ 
+
+
+
+
+</div>      
+</section>
+
+</body>
+<script>
+    const chooseLangButton = document.getElementById('choose-lng')
+    const iFrameElements = document.getElementsByTagName('iframe')
+
+    chooseLangButton.addEventListener('click', onChooseLangButtonClickHandler)
+    // window.addEventListener('load', fixIframeDimesions)
+
+    function onChooseLangButtonClickHandler(e){
+        const url = window.location.pathname
+        const doctorId = url.split('/').at(-1)
+        console.log(doctorId)
+        const redirectURL = `${window.location.origin}/select-language/?next=/${doctorId}`
+        window.location.href = redirectURL
+    }
+
+    function fixIframeDimesions(e){
+        for(let eachIframe of iFrameElements){
+            eachIframe.removeAttribute('width')
+            eachIframe.removeAttribute('height')
+        }
+    }
+</script>
+</html>

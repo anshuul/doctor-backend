@@ -18,6 +18,10 @@ class SalesOfficer(models.Model):
 class DoctorCategory(models.Model):
     name = models.CharField(max_length=50)
 
+    class Meta:
+        verbose_name = 'Doctor Category'
+        verbose_name_plural = 'Doctor Categories'
+
     def __str__(self):
         return self.name
 

@@ -4,7 +4,7 @@ from django.forms import Form
 
 @admin.register(Doctor)
 class DoctorAdmin(admin.ModelAdmin):
-    list_display = ['name', 'sales_officer', 'category',
+    list_display = ['id', 'name', 'sales_officer', 'category',
                     'is_qr_code_generated']
 
     def get_readonly_fields(self, request, obj=None):

@@ -11,8 +11,8 @@ class ServiceLanguage(models.Model):
 
 class Content(models.Model):
     title = models.CharField(max_length=100)
-    video_url = models.URLField(null=True, blank=True)
-    video_thumnail = models.ImageField(upload_to='media/thumbnails', null=True, blank=True)
+    '''video_url = models.URLField(null=True, blank=True)
+    video_thumnail = models.ImageField(upload_to='media/thumbnails', null=True, blank=True)'''
     description = models.TextField(null=True, blank=True)
     video_embed_code = models.TextField(null=True, blank=True)
 

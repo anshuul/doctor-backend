@@ -39,3 +39,6 @@ def language_selected_page_view(request):
     if request.method == 'POST':
         return redirect(f'{request.GET.get("next")}?language={request.POST.get("language")}')
     return render(request, 'services/select_language_page.html')
+
+def index_page(request):
+    return render(request, 'services/index.html')

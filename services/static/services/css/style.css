@@ -87,6 +87,7 @@ iframe {
     height: auto;
 }
 
+
 .change-language #choose-lng {cursor: pointer;}
 
 @media (max-width: 480px) { 

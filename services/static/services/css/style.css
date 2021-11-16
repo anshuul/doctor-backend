@@ -87,8 +87,18 @@ iframe {
     height: auto;
 }
 
-
 .change-language #choose-lng {cursor: pointer;}
+
+.sm-text {font-size: 12px; padding-top: 0; margin-top: 2px;}
+
+.sel-btn {font-family: 'Oswald', sans-serif; font-size: 19px;  background-color: #006f66;
+    width: auto; padding: 4px 30px 6px 30px; display: inline-block; color: #ffffff;
+text-align: center; border: 2px solid #0a8f87; text-decoration: none; height: 30px;
+transition: all 0.5s ease;  -moz-border-radius: 6px;  -webkit-border-radius: 6px;
+    border-radius: 6px; -khtml-border-radius: 6px;}
+.cl-btn { font-weight: bold; font-size: 21px;  float: right;}
+
+
 
 @media (max-width: 480px) { 
 	 #video1 {left: 40%; top:0;}

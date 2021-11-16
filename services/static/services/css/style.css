@@ -71,8 +71,22 @@ iframe {
 }
 /*VIDEOPOP*/
 
+.hm-title.container p {
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 26px;
+    margin-top: 11px;
+    padding: 0 0px 20px 0px;
+    font-family: 'Oswald', sans-serif;
+    color: #2b2a28;
+}
 
+.hm-title.container img {
+	width: 100%;
+    height: auto;
+}
 
+.change-language #choose-lng {cursor: pointer;}
 
 @media (max-width: 480px) { 
 	 #video1 {left: 40%; top:0;}

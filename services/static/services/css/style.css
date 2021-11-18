@@ -109,7 +109,7 @@ transition: all 0.5s ease;  -moz-border-radius: 6px;  -webkit-border-radius: 6px
     -webkit-border-radius: 6px;  border-radius: 6px;  -khtml-border-radius: 6px;}
 
 
-
+.chose-title {width: 100%;  display: inline-block; margin-bottom: 18px;  font-size: 18px;}
 
 @media (max-width: 480px) { 
 	 #video1 {left: 40%; top:0;}

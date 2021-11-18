@@ -16,7 +16,7 @@ p{font-size: 14px; line-height: 22px;}
 .container {max-width: 1200px; width: 90%; margin: 0 auto}
 
 .language {margin: 0; padding: 0; list-style: none;}
-.language li {display: inline-block; max-width: 300px; width: 24%; vertical-align: top; margin: 11px;}
+.language li {display: inline-block; max-width: 300px; vertical-align: top; width: 100%;  margin: 0px 0px 13px 0px;}
 
 .language li a {display: inline-block; width: 100%; background-color: #00c7a8; color:#ffffff; text-align: center; border: 2px solid #0a8f87;
 	text-decoration: none; font-size: 15px; height: 30px; padding-top: 11px; transition: all 0.5s ease;
@@ -104,9 +104,15 @@ transition: all 0.5s ease;  -moz-border-radius: 6px;  -webkit-border-radius: 6px
 
 #langpop:target {width: 88%;  height: 100vh;  padding: 24px;}
 
+.clickbtn-lng {font-family: 'Oswald', sans-serif;  font-size: 19px;  background-color: #006f66;  width: auto;  padding: 4px 30px 6px 30px;
+    display: inline-block;  color: #ffffff;  border: 2px solid #0a8f87;  transition: all 0.5s ease;  -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;  border-radius: 6px;  -khtml-border-radius: 6px;}
+
+
+
 
 @media (max-width: 480px) { 
 	 #video1 {left: 40%; top:0;}
 	 .change-language {text-align: right;}
-	 .language li {width: 42%;}
+	 .language li {width: 100%;  margin: 0px 0px 13px 0px;}
 }

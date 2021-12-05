@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <title>Gastro Awareness</title>
 <link href="{% static '/services/css/style.css' %}" rel="stylesheet" type="text/css">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script type="text/javascript">function refreshIframe() {
     var ifr = document.getElementsByName('Right')[0];
@@ -88,5 +89,45 @@
             eachIframe.removeAttribute('height')
         }
     }
+
+    async function storeDoctorHist(data) {
+        try {
+            const doctor_id = "{{ doctor.id }}"
+            const response = await axios.post('/users/register-doctor-hit/', { ...data, doctor_id})
+            if(response.status == 201){
+                return response.data.status
+            }
+        } catch (err) {
+            console.log(err.data.message)
+        }
+    }
+
+    function getLocationCoordinates(){
+        
+        navigator.geolocation.getCurrentPosition((position) => {
+            axios.get(
+                `https://us1.locationiq.com/v1/reverse.php?key=pk.c290bd0db018fe935957bb190544e0ca&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`
+            ).then((response) => {
+                const {village, city, state} = response.data.address;
+                console.log(village, city, state)
+                const locationData = {
+                    village: village.trim().toUpperCase(),
+                    city: city.trim().toUpperCase(),
+                    state: 'CHENNAI',
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                }
+                console.log(locationData)
+                return storeDoctorHist(locationData)
+            })
+            .then(resp => {
+                console.log(resp)
+            })
+            .catch(err => {
+                console.error(err.message)
+            })
+    });
+    }
+    window.onload = getLocationCoordinates()
 </script>
 </html>

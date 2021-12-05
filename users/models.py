@@ -35,3 +35,18 @@ class Doctor(models.Model):
         return self.name
 
 post_save.connect(post_save_activities_for_doctor, sender=Doctor)
+
+
+class DoctorHits(models.Model):
+    doctor = models.ForeignKey(Doctor, null=True, blank=True,on_delete=models.SET_NULL)
+    hit_count = models.IntegerField(default=1)
+    village_or_city = models.CharField(max_length=50, null=True, blank=True)
+    state = models.CharField(max_length=50, null=True, blank=True)
+    longitude = models.CharField(max_length=20)
+    latitude = models.CharField(max_length=20)
+
+    class Meta:
+        verbose_name_plural = 'Doctor Hits'
+
+    def __str__(self):
+        return self.doctor.name

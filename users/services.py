@@ -12,4 +12,37 @@ def generate_qrcode_for_doctor(doctor):
     qr_code.save(storage_path)
     print(storage_path)
     return image_dest
+
+def store_doctor_hits(doctor, data):
+    from .models import DoctorHits
+    city = data.get('city')
+    village = data.get('village')
+    state = data.get('state')
+    latitude = data.get('latitude')
+    longitude = data.get('longitude')
+
+    search_params = {
+        'doctor':doctor
+    }
+
+    if not city and village:
+        village_or_city = village
+    else:
+        village_or_city = city
+    search_params['village_or_city'] = village_or_city.upper()
+
+    if state:
+        search_params['state'] = state.upper()
+
+    print(search_params)
+
+    already_registered_hit = DoctorHits.objects.filter(**search_params).order_by('id')
+    print(already_registered_hit)
+    if already_registered_hit:
+        already_registered_hit = already_registered_hit.last()
+        already_registered_hit.hit_count += 1
+        already_registered_hit.save()
+    else:
+        DoctorHits.objects.create(doctor=doctor, village_or_city=village_or_city.upper(), state=state.upper(), longitude=longitude,latitude=latitude)
+
     

@@ -15,7 +15,7 @@ def doctor_service_page_view(request,id):
         else:
             doctor_service = Service.objects.prefetch_related('contents').filter(categories = doctor.category).last()
         if doctor_service:
-            service_content = doctor_service.contents.all()
+            service_content = doctor_service.contents.all()[::-1]
         else:
             service_content = None
 
